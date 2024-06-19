@@ -5,12 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import Brown from "@/assets/brown.jpg";
 import { AiOutlineClose } from "react-icons/ai";
+import { usePathname } from "next/navigation";
 
 const Nav = () => {
+  const pathName = usePathname();
+
   const [dropdown, setDropdown] = useState(false);
   const handleShowDropdown = () => setDropdown((prev) => true);
   const handleHideDropdown = () => setDropdown((prev) => false);
-  const loggedIn = true;
+  const loggedIn = false;
   return (
     <section id="nav">
       <div className="ss:px-12 py-6 shadow nav-container">
@@ -34,7 +37,12 @@ const Nav = () => {
             <Link href="/">About</Link>
           </li>
           <li className="">
-            <Link href="/blog">Blogs</Link>
+            <Link
+              href="/blog"
+              className={pathName === "/blog" ? "text-accent font-bold" : ""}
+            >
+              Blogs
+            </Link>
           </li>
           <li className="">
             <Link href="/">Books</Link>
@@ -83,10 +91,22 @@ const Nav = () => {
           ) : (
             <>
               <Link href="/login">
-                <button className="">Login</button>
+                <button
+                  className={
+                    pathName === "/login" ? "text-accent font-bold" : ""
+                  }
+                >
+                  Login
+                </button>
               </Link>
               <Link href="/sign-up">
-                <button className="">Signup</button>
+                <button
+                  className={
+                    pathName === "/sign-up" ? "text-accent font-bold" : ""
+                  }
+                >
+                  Signup
+                </button>
               </Link>
             </>
           )}

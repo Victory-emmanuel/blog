@@ -1,11 +1,11 @@
-import Image from "next/image";
+import Blog from "./blog/page";
 
 export default function Home() {
   return (
     <>
       <div className="">
-        <p className=""> Next js </p>{" "}
-      </div>{" "}
+        <Blog />
+      </div>
     </>
   );
 }
